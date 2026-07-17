@@ -90,7 +90,7 @@ function DashboardPreview() {
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
           <div className="w-3 h-3 rounded-full bg-green-500/80" />
-          <span className="ml-3 text-xs text-white/30 font-mono">WhatsappGptx Dashboard</span>
+          <span className="ml-3 text-xs text-white/30 font-mono">Api Connect Dashboard</span>
         </div>
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-px bg-white/5 border-b border-white/5">
@@ -234,11 +234,11 @@ export default function LandingPage() {
 
   // ── Referral context (ALL EXISTING LOGIC PRESERVED) ─────────────────────
   const { client, refCode, isReferred, isLoading: refLoading } = useReferralContext();
-  const brandName   = client?.name || "WhatsappGptx";
+  const brandName   = client?.name || "Api Connect";
   const brandLogo   = client?.logo || assest.logo;
   const brandPhone  = client?.phone || "";
   const brandColor  = client?.theme_color || "";
-  const whatsappLink = brandPhone ? `https://wa.me/${brandPhone}` : "https://alvo.chat/6l4J";
+  const whatsappLink = brandPhone ? `https://wa.me/${brandPhone}` : "https://alvo.chat/7TL2";
   const demoLink = whatsappLink;
   const signupLink = refCode ? `/register?ref=${refCode}` : "/register";
   const loginLink  = refCode ? `/login?ref=${refCode}` : "/login";
@@ -262,7 +262,7 @@ export default function LandingPage() {
   }, []);
 
   const testimonials = [
-    { name: "Rahul Sharma", role: "Founder, ShopEasy", avatar: "RS", rating: 5, text: "WhatsGPTX transformed how we engage with customers. Response rate up 340%, sales up 60% in 3 months." },
+    { name: "Rahul Sharma", role: "Founder, ShopEasy", avatar: "RS", rating: 5, text: "API Connect transformed how we engage with customers. Response rate up 340%, sales up 60% in 3 months." },
     { name: "Priya Patel", role: "Marketing Head, FreshMart", avatar: "PP", rating: 5, text: "The chatbot builder is incredibly powerful yet simple. We automated 80% of queries instantly." },
     { name: "Amit Verma", role: "CEO, TechNova", avatar: "AV", rating: 5, text: "Best WhatsApp marketing platform we've used. Mass messaging alone saved 20+ hours per week." },
     { name: "Sarah Khan", role: "Ops Manager, StyleHub", avatar: "SK", rating: 5, text: "The multi-agent inbox is a game-changer. Support efficiency doubled, CSAT scores at all-time high." },
@@ -278,7 +278,7 @@ export default function LandingPage() {
     { title: "WhatsApp Commerce", description: "Product catalogs, order collection, UPI payments — complete commerce inside WhatsApp.", icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 576 512"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319z" /></svg> },
   ];
 
-  const stats = [{ value: "100+", label: "Active Businesses" }, { value: "2M+", label: "Messages Sent" }, { value: "98.4%", label: "Delivery Rate" }, { value: "99.9%", label: "Uptime SLA" }];
+  const stats = [{ value: "1000+", label: "Active Businesses" }, { value: "2M+", label: "Messages Sent" }, { value: "98.4%", label: "Delivery Rate" }, { value: "99.9%", label: "Uptime SLA" }];
 
   const partners = [
     { name: "Shopify", logo: "/images/integrations/shopify.png" },
@@ -327,7 +327,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-[68px]">
             <a href="/" className="flex items-center gap-2.5 shrink-0">
-              <img src={brandLogo} alt={brandName} className="h-9 w-auto" />
+              <img src={brandLogo} alt={brandName} className="h-16 w-auto" />
             </a>
 
             <nav className="hidden lg:flex items-center gap-1">
@@ -631,7 +631,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── AFFILIATES ────────────────────────────────────────────────────────── */}
-      {!isReferred && (
+      {/* {!isReferred && (
         <section id="affiliates" className="py-24 relative overflow-hidden">
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #075E54, #0d4f47)" }} />
           <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)", backgroundSize: "28px 28px" }} />
@@ -667,7 +667,7 @@ export default function LandingPage() {
             </motion.div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* ── CTA ───────────────────────────────────────────────────────────────── */}
       <section className="py-24 bg-[#fafafa]">
@@ -698,7 +698,7 @@ export default function LandingPage() {
             <div className="lg:col-span-1 space-y-4">
               <img src={brandLogo} alt={brandName} className="h-9 w-auto brightness-0 invert" />
               <p className="text-sm text-white/40 leading-relaxed">
-                {isReferred ? `${brandName} — Powered by WhatsGPTX.` : "Official WhatsApp Business API solution. Powering automated messaging for 100+ businesses."}
+                {isReferred ? `${brandName} — Powered by API Connect.` : "Official WhatsApp Business API solution. Powering automated messaging for 100+ businesses."}
               </p>
               <div className="flex gap-3">
                 {[{ href: "https://www.facebook.com/share/1C4Q7heRr8/", label: "Facebook" }, { href: "https://www.instagram.com/marketingbhaix", label: "Instagram" }, { href: "https://youtube.com/@marketingbhaix", label: "YouTube" }].map((s) => (
@@ -730,7 +730,7 @@ export default function LandingPage() {
           <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-xs text-white/25">
               © {new Date().getFullYear()} {brandName}. All rights reserved.
-              {isReferred && <span className="text-white/15"> · Powered by WhatsappGptx</span>}
+              {isReferred && <span className="text-white/15"> · Powered by Api Connect</span>}
             </p>
             <div className="flex items-center gap-1.5 text-xs text-white/25">
               <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]" />
@@ -801,7 +801,7 @@ export default function LandingPage() {
 //   const { client, refCode, isReferred, isLoading: refLoading } = useReferralContext();
 
 //   // ── Derived branding values (fallback to defaults) ─────────────────────
-//   const brandName   = client?.name || "WhatsappGptx";
+//   const brandName   = client?.name || "Api Connect";
 //   const brandLogo   = client?.logo || assest.logo;
 //   const brandPhone  = client?.phone || "";
 //   const brandColor  = client?.theme_color || "";
@@ -1401,7 +1401,7 @@ export default function LandingPage() {
 //           <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
 //             <p className="text-sm text-gray-400">
 //               &copy; {new Date().getFullYear()} {brandName}. All rights reserved.
-//               {isReferred && <span className="text-gray-300"> · Powered by WhatsappGptx</span>}
+//               {isReferred && <span className="text-gray-300"> · Powered by Api Connect</span>}
 //             </p>
 //             <div className="flex items-center gap-1.5 text-sm text-gray-400">
 //               <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]" />

@@ -4,11 +4,11 @@ const PrivacyPolicy = () => {
   return (
     <div className="max-w-5xl mx-auto p-8 text-gray-800 bg-gray-50">
       <h1 className="text-4xl font-extrabold text-blue-700 mb-8 text-center">
-        Privacy Policy – Numlock IT Solutions WhatsApp Marketing
+        Privacy Policy – Api Connect WhatsApp Marketing
       </h1>
 
       <p className="mb-6 text-lg leading-relaxed">
-        At <strong>Numlock IT Solutions</strong>, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal data when you use our WhatsApp marketing automation platform. We are a trusted service integrated with the WhatsApp Cloud API and secure payment gateways like Razorpay.
+        At <strong>Api Connect</strong>, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal data when you use our WhatsApp marketing automation platform. We are a trusted service integrated with the WhatsApp Cloud API and secure payment gateways like Razorpay.
       </p>
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">1. Information We Collect</h2>
@@ -43,10 +43,10 @@ const PrivacyPolicy = () => {
       <p className="mb-6">
         You can request deletion of your account and associated data anytime by contacting:
         <a
-          href="mailto:support@numlockitsolutions.co.in"
+          href="mailto:apiconnect201@gmail.com"
           className="text-blue-600 underline hover:text-blue-800 ml-1"
         >
-          support@numlockitsolutions.co.in
+          apiconnect201@gmail.com
         </a>.
         We will fulfill your request in compliance with applicable laws and platform policies.
       </p>
@@ -65,10 +65,10 @@ const PrivacyPolicy = () => {
       <p className="mb-6">
         If you have any questions or concerns about this Privacy Policy, feel free to contact us at:
         <a
-          href="mailto:support@numlockitsolutions.co.in"
+          href="mailto:apiconnect201@gmail.com"
           className="text-blue-600 underline hover:text-blue-800 ml-1"
         >
-          support@numlockitsolutions.co.in
+          apiconnect201@gmail.com
         </a>
       </p>
 

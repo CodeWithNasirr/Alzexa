@@ -1,7 +1,7 @@
 {
-  "name": "GPTX Admin",
-  "short_name": "GPTX Admin",
-  "description": "GPTX Admin Dashboard",
+  "name": "API Connect Admin",
+  "short_name": "API Admin",
+  "description": "API Connect Admin Dashboard",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

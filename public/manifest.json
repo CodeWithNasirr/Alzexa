@@ -1,8 +1,8 @@
 
 
 {
-  "name": "Whatsapp GPTx",
-  "short_name": "Gptx",
+  "name": "API Connect",
+  "short_name": "API",
   "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#ffffff",
