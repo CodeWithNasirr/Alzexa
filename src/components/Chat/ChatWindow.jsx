@@ -1430,6 +1430,9 @@ const ChatWindow = ({ recipient }) => {
   const [isSending, setIsSending] = useState(false);
   const [isConversationExpired, setIsConversationExpired] = useState(false);
   const [contactName, setContactName] = useState(recipient);
+  // Backend-authoritative billing/window status (Phase 4). Drives the composer
+  // banner + composer-only lock. Never hides the conversation.
+  const [billingStatus, setBillingStatus] = useState(null);
 
   const [replyTo, setReplyTo] = useState(null);
   const [activeMessageMenu, setActiveMessageMenu] = useState(null);
@@ -1462,6 +1465,59 @@ const ChatWindow = ({ recipient }) => {
     if (file.type.startsWith("audio/") && allowedFiles.accept.includes("audio/*")) return true;
     return false;
   }, [allowedFiles]);
+
+  // Fetch the authoritative billing/window status for the composer.
+  const refreshBillingStatus = useCallback(async () => {
+    if (!recipient || !token) return;
+    try {
+      const res = await axios.get(
+        `${API_BASE_URL}/api/chats/${recipient}/billing-status/`,
+        { headers: { Authorization: `Token ${token}` } }
+      );
+      setBillingStatus(res.data || null);
+    } catch {
+      setBillingStatus(null); // fail-open: never lock/hide the chat on a status error
+    }
+  }, [recipient, token]);
+
+  useEffect(() => { refreshBillingStatus(); }, [refreshBillingStatus]);
+
+  // Composer-only lock: disable sending only when the backend says we cannot send.
+  const billingLocked = billingStatus ? billingStatus.can_send === false : false;
+
+  // Map a send rejection to the composer lock + banner. TWO distinct cases:
+  //  • 402 PAYMENT_METHOD_REQUIRED — a REAL Meta payment/billing error. Show the
+  //    "Add Payment Method" lock (→ Meta billing setup).
+  //  • 403 template_required — the 24h window is closed; an approved template is
+  //    required. This is a MESSAGING-eligibility fact, NOT a payment demand.
+  //  • anything else — a normal error toast, never a billing lock.
+  const handleSendError = useCallback((error, fallback) => {
+    const status = error?.response?.status;
+    const d = error?.response?.data || {};
+    if (status === 402 && (d.billing_state === "PAYMENT_METHOD_REQUIRED" || d.requires_payment)) {
+      setBillingStatus((prev) => ({
+        ...(prev || {}),
+        can_send: false,
+        billing_state: "PAYMENT_METHOD_REQUIRED",
+        requires_payment: true,
+        requires_template: false,
+      }));
+      toast.error(d.message || "Payment method required to continue messaging");
+      return;
+    }
+    if (status === 403 && (d.requires_template || d.billing_state === "TEMPLATE_REQUIRED")) {
+      setBillingStatus((prev) => ({
+        ...(prev || {}),
+        can_send: false,
+        billing_state: "TEMPLATE_REQUIRED",
+        requires_payment: false,
+        requires_template: true,
+      }));
+      toast.error(d.message || "Send an approved template to reopen this conversation");
+      return;
+    }
+    toast.error(d.error || d.message || fallback);
+  }, []);
 
   const groupedMessages = useMemo(() => {
     const groups = {};
@@ -1752,9 +1808,9 @@ const ChatWindow = ({ recipient }) => {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "sent" } : m)));
     } catch (error) {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "failed" } : m)));
-      toast.error(error.response?.data?.error || "Failed to send message");
+      handleSendError(error, "Failed to send message");
     } finally { setIsSending(false); }
-  }, [recipient, token, replyTo, subscriptionStatus, fetchScheduledMessages]);
+  }, [recipient, token, replyTo, subscriptionStatus, fetchScheduledMessages, handleSendError]);
 
   const handleSendFile = useCallback(async ({ file, caption = "", scheduleAt = null }) => {
     if (!file) return;
@@ -1774,9 +1830,9 @@ const ChatWindow = ({ recipient }) => {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "sent" } : m)));
     } catch (error) {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "failed" } : m)));
-      toast.error(error.response?.data?.error || "Failed to send file");
+      handleSendError(error, "Failed to send file");
     } finally { setIsSending(false); }
-  }, [recipient, token, isFileTypeAllowed, allowedFiles, subscriptionStatus, fetchScheduledMessages]);
+  }, [recipient, token, isFileTypeAllowed, allowedFiles, subscriptionStatus, fetchScheduledMessages, handleSendError]);
 
   const handleSendVoice = useCallback(async (audioFile, duration, scheduleAt = null) => {
     if (scheduleAt) {
@@ -1792,9 +1848,9 @@ const ChatWindow = ({ recipient }) => {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "sent" } : m)));
     } catch (error) {
       setMessages((prev) => prev.map((m) => (m.temp_id === tempId ? { ...m, status: "failed" } : m)));
-      toast.error(error.response?.data?.error || "Failed to send voice message");
+      handleSendError(error, "Failed to send voice message");
     }
-  }, [recipient, token, fetchScheduledMessages]);
+  }, [recipient, token, fetchScheduledMessages, handleSendError]);
 
   // ═══════════════════════════════════════════════════════════════════════════
   // FLOW ACTIONS
@@ -2017,6 +2073,48 @@ const ChatWindow = ({ recipient }) => {
           />
         )}
 
+        {/* ── BILLING / WINDOW INFO STRIP (non-locking states only) ── */}
+        {!isSelectMode && billingStatus && !billingLocked && (() => {
+          const win = billingStatus.window || {};
+          const ctwaH = win.ctwa_remaining_seconds ? Math.max(1, Math.round(win.ctwa_remaining_seconds / 3600)) : null;
+          const svcH = win.service_remaining_seconds ? Math.max(1, Math.round(win.service_remaining_seconds / 3600)) : null;
+          const st = billingStatus.billing_state;
+          if (st === "FREE_CTWA_72H") {
+            const soon = ctwaH && ctwaH <= 6;
+            return (
+              <div className={`px-4 py-1.5 text-xs border-t ${soon
+                ? "bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-300"
+                : "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-300"}`}>
+                72-hour free conversation{ctwaH ? ` · expires in ~${ctwaH}h` : ""}{soon ? " — free window expires soon" : ""}
+              </div>
+            );
+          }
+          if (st === "SERVICE_WINDOW" && svcH && svcH <= 3) {
+            return (
+              <div className="px-4 py-1.5 text-xs border-t bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-300">
+                Service window expires soon{svcH ? ` · ~${svcH}h left` : ""}
+              </div>
+            );
+          }
+          // CASE A — Meta says this conversation is free (pricing.billable == false).
+          if (billingStatus.pricing_status === "FREE") {
+            return (
+              <div className="px-4 py-1 text-[11px] border-t bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+                Free service conversation
+              </div>
+            );
+          }
+          // CASE B — billable and Meta billing is handled on the customer's Meta account.
+          if (st === "BILLABLE" || st === "BILLING_ACTIVE" || billingStatus.pricing_status === "BILLABLE") {
+            return (
+              <div className="px-4 py-1 text-[11px] border-t bg-blue-50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300">
+                Meta billing active
+              </div>
+            );
+          }
+          return null;
+        })()}
+
         {/* ── CHAT INPUT ── */}
         {!isSelectMode && (
           <ChatInputArea
@@ -2031,6 +2129,11 @@ const ChatWindow = ({ recipient }) => {
             replyTo={replyTo}
             onCancelReply={cancelReply}
             onScrollToReply={scrollToMessage}
+            billingStatus={billingStatus}
+            // "Add Payment Method" → Meta WhatsApp Business billing setup, NOT the
+            // GPTX wallet (/Credits). Meta charges are settled on the customer's own
+            // Meta account in the current Tech Provider model.
+            onEnableBilling={() => navigate("/whatsapp-setting")}
           />
         )}
       </div>

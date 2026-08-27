@@ -22,6 +22,7 @@ import {
   Bell,
   Zap,
   User,
+  BarChart3,
 } from "lucide-react";
 import { SiWhatsapp as SiWA } from "react-icons/si";
 import { Avatar } from "../ui";
@@ -287,6 +288,12 @@ export function MobileBottomNav() {
     },
 
    
+    {
+      to: "/meta-usage",
+      icon: <BarChart3 size={22} />,
+      label: "Usage",
+    },
+
 
 
     {

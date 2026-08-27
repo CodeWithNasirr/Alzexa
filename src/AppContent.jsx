@@ -30,6 +30,8 @@ import ProtectedRoute from "./components/Components/Protected_Route";
 import FullProtectedRoute from "./components/Components/FullProtectedRoute";
 import WhatsAppSettings from "./components/Components/WhatsAppSettings";
 import ChatWindow from "./components/Chat/ChatWindow";
+import MetaUsageReport from "./components/Usage/MetaUsageReport";
+
 import Subscription from "./components/Subscriptions/Subscription";
 import Notfound from "./components/Components/notfound";
 import AuthSlider from "./components/Authentications/AuthSlider";
@@ -186,6 +188,8 @@ function AppContent() {
           <Route path="/chats/:id" element={<FullProtectedRoute element={ChatWindow} />} />
           <Route path="/subscriptions" element={<FullProtectedRoute element={Subscription} />} />
           <Route path="/my-usage-panel" element={<FullProtectedRoute element={MyUsagePanel} />} />
+          <Route path="/meta-usage" element={<FullProtectedRoute element={MetaUsageReport} />} />
+
           {/* <Route path="/chat-flow" element={<FullProtectedRoute element={ () => <FlowBuilder setEnableChatFlow={setEnableChatFlow} />} />} /> */}
           <Route
             path="/chat-flow"
