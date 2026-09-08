@@ -90,7 +90,7 @@ function DashboardPreview() {
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
           <div className="w-3 h-3 rounded-full bg-green-500/80" />
-          <span className="ml-3 text-xs text-white/30 font-mono">Api Connect Dashboard</span>
+          <span className="ml-3 text-xs text-white/30 font-mono">Alexaz Dashboard</span>
         </div>
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-px bg-white/5 border-b border-white/5">
@@ -234,7 +234,7 @@ export default function LandingPage() {
 
   // ── Referral context (ALL EXISTING LOGIC PRESERVED) ─────────────────────
   const { client, refCode, isReferred, isLoading: refLoading } = useReferralContext();
-  const brandName   = client?.name || "Api Connect";
+  const brandName   = client?.name || "Alexaz";
   const brandLogo   = client?.logo || assest.logo;
   const brandPhone  = client?.phone || "";
   const brandColor  = client?.theme_color || "";
@@ -262,7 +262,7 @@ export default function LandingPage() {
   }, []);
 
   const testimonials = [
-    { name: "Rahul Sharma", role: "Founder, ShopEasy", avatar: "RS", rating: 5, text: "API Connect transformed how we engage with customers. Response rate up 340%, sales up 60% in 3 months." },
+    { name: "Rahul Sharma", role: "Founder, ShopEasy", avatar: "RS", rating: 5, text: "Alexaz transformed how we engage with customers. Response rate up 340%, sales up 60% in 3 months." },
     { name: "Priya Patel", role: "Marketing Head, FreshMart", avatar: "PP", rating: 5, text: "The chatbot builder is incredibly powerful yet simple. We automated 80% of queries instantly." },
     { name: "Amit Verma", role: "CEO, TechNova", avatar: "AV", rating: 5, text: "Best WhatsApp marketing platform we've used. Mass messaging alone saved 20+ hours per week." },
     { name: "Sarah Khan", role: "Ops Manager, StyleHub", avatar: "SK", rating: 5, text: "The multi-agent inbox is a game-changer. Support efficiency doubled, CSAT scores at all-time high." },
@@ -698,7 +698,7 @@ export default function LandingPage() {
             <div className="lg:col-span-1 space-y-4">
               <img src={brandLogo} alt={brandName} className="h-9 w-auto brightness-0 invert" />
               <p className="text-sm text-white/40 leading-relaxed">
-                {isReferred ? `${brandName} — Powered by API Connect.` : "Official WhatsApp Business API solution. Powering automated messaging for 100+ businesses."}
+                {isReferred ? `${brandName} — Powered by Alexaz.` : "Official WhatsApp Business API solution. Powering automated messaging for 100+ businesses."}
               </p>
               <div className="flex gap-3">
                 {[{ href: "https://www.facebook.com/share/1C4Q7heRr8/", label: "Facebook" }, { href: "https://www.instagram.com/marketingbhaix", label: "Instagram" }, { href: "https://youtube.com/@marketingbhaix", label: "YouTube" }].map((s) => (
@@ -730,7 +730,7 @@ export default function LandingPage() {
           <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-xs text-white/25">
               © {new Date().getFullYear()} {brandName}. All rights reserved.
-              {isReferred && <span className="text-white/15"> · Powered by Api Connect</span>}
+              {isReferred && <span className="text-white/15"> · Powered by Alexaz</span>}
             </p>
             <div className="flex items-center gap-1.5 text-xs text-white/25">
               <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]" />
@@ -801,7 +801,7 @@ export default function LandingPage() {
 //   const { client, refCode, isReferred, isLoading: refLoading } = useReferralContext();
 
 //   // ── Derived branding values (fallback to defaults) ─────────────────────
-//   const brandName   = client?.name || "Api Connect";
+//   const brandName   = client?.name || "Alexaz";
 //   const brandLogo   = client?.logo || assest.logo;
 //   const brandPhone  = client?.phone || "";
 //   const brandColor  = client?.theme_color || "";
@@ -1401,7 +1401,7 @@ export default function LandingPage() {
 //           <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
 //             <p className="text-sm text-gray-400">
 //               &copy; {new Date().getFullYear()} {brandName}. All rights reserved.
-//               {isReferred && <span className="text-gray-300"> · Powered by Api Connect</span>}
+//               {isReferred && <span className="text-gray-300"> · Powered by Alexaz</span>}
 //             </p>
 //             <div className="flex items-center gap-1.5 text-sm text-gray-400">
 //               <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]" />

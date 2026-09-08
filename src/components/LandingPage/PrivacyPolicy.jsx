@@ -4,11 +4,11 @@ const PrivacyPolicy = () => {
   return (
     <div className="max-w-5xl mx-auto p-8 text-gray-800 bg-gray-50">
       <h1 className="text-4xl font-extrabold text-blue-700 mb-8 text-center">
-        Privacy Policy – Api Connect WhatsApp Marketing
+        Privacy Policy – Alexaz WhatsApp Marketing
       </h1>
 
       <p className="mb-6 text-lg leading-relaxed">
-        At <strong>Api Connect</strong>, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal data when you use our WhatsApp marketing automation platform. We are a trusted service integrated with the WhatsApp Cloud API and secure payment gateways like Razorpay.
+        At <strong>Alexaz</strong>, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal data when you use our WhatsApp marketing automation platform. We are a trusted service integrated with the WhatsApp Cloud API and secure payment gateways like Razorpay.
       </p>
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">1. Information We Collect</h2>

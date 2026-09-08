@@ -64,7 +64,7 @@ export default function Sidebar({ children }) {
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shrink-0">
               <SiWA className="w-4 h-4 text-white" />
             </div>
-            <span className="font-bold text-sm text-white truncate">Gpx Platform</span>
+            <span className="font-bold text-sm text-white truncate">Alexaz</span>
           </div>
         )}
         <button

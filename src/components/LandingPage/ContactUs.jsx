@@ -7,7 +7,7 @@ const ContactUs = () => {
         Contact Us
       </h1>
       <p className="mb-6 text-lg leading-relaxed">
-        We’re here to assist you with any questions or support needs for Api Connect WhatsApp Marketing, a Razorpay-verified WhatsApp automation platform. Reach out to us using the details below.
+        We’re here to assist you with any questions or support needs for Alexaz WhatsApp Marketing, a Razorpay-verified WhatsApp automation platform. Reach out to us using the details below.
       </p>
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">Get in Touch</h2>

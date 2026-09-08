@@ -132,7 +132,7 @@ const AuthSlider = () => {
             <div className="mb-8 bg-white/10 backdrop-blur-sm rounded-2xl p-4">
               <img
                 src={assest.logo}
-                alt="Api Connect"
+                alt="Alexaz"
                 className="h-24  w-auto"
               />
             </div>

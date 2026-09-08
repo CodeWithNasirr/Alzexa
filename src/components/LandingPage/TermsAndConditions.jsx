@@ -4,15 +4,15 @@ const TermsAndConditions = () => {
   return (
     <div className="max-w-5xl mx-auto p-8 text-gray-800 bg-gray-50">
       <h1 className="text-4xl font-extrabold text-blue-700 mb-8 text-center">
-        Terms and Conditions for Api Connect WhatsApp Marketing
+        Terms and Conditions for Alexaz WhatsApp Marketing
       </h1>
       <p className="mb-6 text-lg leading-relaxed">
-        Welcome to Api Connect WhatsApp Marketing, a trusted WhatsApp automation platform verified by Razorpay. By using our services, you agree to the following terms and conditions. Please read them carefully.
+        Welcome to Alexaz WhatsApp Marketing, a trusted WhatsApp automation platform verified by Razorpay. By using our services, you agree to the following terms and conditions. Please read them carefully.
       </p>
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">1. Terms and Conditions</h2>
       <p className="mb-6">
-        These terms govern your use of Api Connect WhatsApp Marketing’s SaaS platform for WhatsApp automation. By accessing or using our services, you agree to comply with these terms and all applicable laws.
+        These terms govern your use of Alexaz WhatsApp Marketing’s SaaS platform for WhatsApp automation. By accessing or using our services, you agree to comply with these terms and all applicable laws.
       </p>
       <ul className="list-disc list-inside mb-6 space-y-2">
         <li>You must provide accurate account information, including valid WhatsApp Business Phone Numbers and Meta credentials.</li>
@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">2. Cancellation and Refund</h2>
       <p className="mb-6">
-        We strive to ensure your satisfaction with Api Connect WhatsApp Marketing. Our cancellation and refund policy is as follows:
+        We strive to ensure your satisfaction with Alexaz WhatsApp Marketing. Our cancellation and refund policy is as follows:
       </p>
       <ul className="list-disc list-inside mb-6 space-y-2">
         <li><strong>Cancellation</strong>: You may cancel your subscription at any time through your account dashboard or by contacting us at <a href="mailto:apiconnect201@gmail.com" className="text-blue-600 underline hover:text-blue-800">apiconnect201@gmail.com</a>. Cancellation takes effect at the end of the current billing cycle.</li>
@@ -33,7 +33,7 @@ const TermsAndConditions = () => {
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">3. Shipping and Delivery</h2>
       <p className="mb-6">
-        As Api Connect WhatsApp Marketing is a digital SaaS platform, no physical shipping is involved. Service delivery is as follows:
+        As Alexaz WhatsApp Marketing is a digital SaaS platform, no physical shipping is involved. Service delivery is as follows:
       </p>
       <ul className="list-disc list-inside mb-6 space-y-2">
         <li><strong>Service Access</strong>: Upon successful subscription and payment verification via Razorpay, you will gain immediate access to our platform.</li>

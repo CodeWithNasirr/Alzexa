@@ -1,7 +1,7 @@
 {
-  "name": "API Connect Admin",
+  "name": "Alexaz Admin",
   "short_name": "API Admin",
-  "description": "API Connect Admin Dashboard",
+  "description": "Alexaz Admin Dashboard",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

@@ -7,7 +7,7 @@ const CancellationAndRefund = () => {
         Cancellation and Refund Policy
       </h1>
       <p className="mb-6 text-lg leading-relaxed">
-        At Api Connect WhatsApp Marketing, we aim to provide a seamless experience with our WhatsApp automation platform, verified by Razorpay. Below is our policy for cancellations and refunds.
+        At Alexaz WhatsApp Marketing, we aim to provide a seamless experience with our WhatsApp automation platform, verified by Razorpay. Below is our policy for cancellations and refunds.
       </p>
 
       <h2 className="text-2xl font-semibold text-blue-600 mt-10 mb-4">Cancellation Policy</h2>
